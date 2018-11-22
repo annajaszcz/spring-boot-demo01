@@ -18,7 +18,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DemoApplication.class, webEnvironment = RANDOM_PORT, properties = "spring.datasource.initialization-mode=always")
+@SpringBootTest(classes = DemoApplication.class, webEnvironment = RANDOM_PORT, properties = {
+        "spring.datasource.initialization-mode=always",
+        "spring.jpa.database-platform=org.hibernate.dialect.MariaDB103Dialect",
+        "spring.datasource.driver-class-name=org.mariadb.jdbc.Driver"
+})
 @ContextConfiguration(initializers = DemoApplicationTests.Initializer.class)
 public class DemoApplicationTests {
 
